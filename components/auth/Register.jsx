@@ -88,15 +88,16 @@ const RegisterComponent = () => {
     <motion.div
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="lg:w-[45%] w-full lg:mx-0 mx-2 lg:px-10 px-4 py-8 pb-12 bg-white rounded-xl shadow-xl"
+      className="lg:w-[35%] w-full lg:mx-0 mx-2 lg:px-10 px-4 py-10 pb-12 rounded-xl shadow-xl"
+      style={{ backgroundColor: "rgba(45,45,45)" }}
     >
-      <div className="flex justify-center flex-col items-center">
+      <div className="flex justify-center flex-col items-center text-white">
         <p className="text-2xl font-semibold">
-          Welcome to <span className="text-blue-500">StudyNex</span> !
+          Welcome to <span className="text-orange-300">PollVue</span> !
         </p>
         <p>
           Already a member?{" "}
-          <a className="text-[#f69749] font-semibold" href="/login">
+          <a className="text-orange-300 font-semibold" href="/login">
             Log in now
           </a>
         </p>

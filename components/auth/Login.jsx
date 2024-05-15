@@ -56,15 +56,16 @@ const LoginComponent = () => {
     <motion.div
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="w-[40%] lg:mx-0 mx-2 lg:px-10 px-4 py-8 pb-12 bg-white rounded-xl shadow-xl"
+      className="w-[35%] lg:mx-0 mx-2 lg:px-10 px-4 py-10 pb-12 rounded-xl shadow-xl"
+      style={{ backgroundColor: "rgb(45,45,45)" }}
     >
-      <div className="flex justify-center flex-col items-center">
+      <div className="flex justify-center flex-col items-center text-white">
         <p className="text-2xl font-semibold">
-          <span className="text-blue-500 ">Welcome</span> Back !
+          <span className="text-orange-300">Welcome</span> Back !
         </p>
         <p>
           Not a member?{" "}
-          <a className="text-[#f69749] font-semibold" href="/register">
+          <a className="text-orange-300 font-semibold" href="/register">
             Sign up now
           </a>
         </p>

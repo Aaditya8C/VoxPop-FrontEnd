@@ -52,8 +52,33 @@
   text-decoration: none;
 }
 
+.fixed-gradient {
+  /* Set the gradient colors */
+  background: linear-gradient(#6b21a8 80%, #8b5cf6);
+  /* Make the gradient fixed */
+  background-attachment: fixed;
+
+  /* Specify other styles */
+  padding: 10px; /* Example padding */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+body {
+  scrollbar-width: none;
+}
+
+.main {
+  background-color: rgb(33, 33, 33);
+}
+
 .input-group {
   position: relative;
+  background-color: inherit;
 }
 
 .input {
@@ -63,15 +88,16 @@
   outline: none;
   border-bottom: 1px solid #c0c0c0;
   border-radius: 4px;
-  font-size: 14px;
-  background-color: transparent;
+  font-size: 18px;
+  background-color: inherit;
+  color: white;
 }
 
 .placeholder {
   position: absolute;
   top: 12px;
   left: 15px;
-  color: #808080;
+  color: white;
   font-size: 18px;
   padding: 0px 5px;
   transition: 0.3s;
@@ -83,7 +109,7 @@
   top: -12px;
   left: 0px;
   font-size: 12px;
-  color: gray;
+  color: white;
   /* background: #fff; */
 }
 
