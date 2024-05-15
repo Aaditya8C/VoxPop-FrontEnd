@@ -52,6 +52,30 @@
   text-decoration: none;
 }
 
+.fixed-gradient {
+  /* Set the gradient colors */
+  background: linear-gradient(#6B21A8 80%, #8B5CF6);
+    /* Make the gradient fixed */
+  background-attachment: fixed;
+
+  /* Specify other styles */
+  padding: 10px; /* Example padding */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+body {
+  scrollbar-width: none;
+}
+
+.main{
+  background-color: rgb(33, 33, 33);
+}
+=======
 .input-group {
   position: relative;
   background-color: inherit;
@@ -102,3 +126,4 @@
 .gradient-transition:hover {
   background-position: 100% 0;
 }
+
