@@ -126,3 +126,12 @@ body {
 .gradient-transition:hover {
   background-position: 100% 0;
 }
+
+.vote-grad{
+  background-image:linear-gradient(
+    to right,
+    #00d2ff 0%,
+    #3a7bd5 51%,
+    #00d2ff 100%
+  );
+}
