@@ -16,6 +16,7 @@ import AddPost from "./AddPost";
 import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { isLoggedInStore } from "@/store/isLoggedInUser";
+import { pollAddStore } from "@/store/isAddPoll";
 
 const Sidebar = () => {
   const [popup, setPopup] = useState(false);
@@ -24,6 +25,8 @@ const Sidebar = () => {
   const router = useRouter();
   const setIsLoggedIn = isLoggedInStore((state) => state.setIsLoggedIn);
   const isLoggedIn = isLoggedInStore((state) => state.isLoggedIn);
+  const setIsPollAdd = pollAddStore((state) => state.setIsPollAdd);
+  const isPollAdd = pollAddStore((state) => state.isPollAdd);
 
   const tabs = useMemo(
     () => [
@@ -92,7 +95,13 @@ const Sidebar = () => {
       </div>
       {isLoggedIn && (
         <div className="flex flex-col gap-2 flex-1 p-6  justify-end">
-          <Button className="btn-grad text-2xl" onClick={() => setPopup(true)}>
+          <Button
+            className="btn-grad text-2xl"
+            onClick={() => {
+              setPopup(true);
+              setIsPollAdd(!isPollAdd);
+            }}
+          >
             Post
           </Button>
           <div
@@ -108,7 +117,7 @@ const Sidebar = () => {
           </div>
         </div>
       )}
-      {popup && <AddPost setPopup={setPopup} />}
+      {popup && <AddPost setPopup={setPopup} closeBtn />}
     </div>
   );
 };

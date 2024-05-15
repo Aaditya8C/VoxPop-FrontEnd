@@ -1,16 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PopupContainer from "../Popup/PopupContainer";
 import { CircleMinus, CirclePlus } from "lucide-react";
 import axios from "axios";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import toast from "react-hot-toast";
 import { getCookie } from "cookies-next";
+import { pollAddStore } from "@/store/isAddPoll";
 
 const AddPost = ({ setPopup }) => {
   const [options, setOptions] = useState(["", ""]);
   const [question, setQuestion] = useState("");
   const [category, setCategory] = useState("");
+  const setIsPollAdd = pollAddStore((state) => state.setIsPollAdd);
+  const setAllPolls = pollAddStore((state) => state.setAllPolls);
 
   const handleAddOption = () => {
     setOptions([...options, ""]);
@@ -48,7 +51,9 @@ const AddPost = ({ setPopup }) => {
       if (response.data.status) {
         console.log(response.data);
         toast.success(response.data.message);
-        // setPopup(false);
+        setPopup(false);
+        setIsPollAdd(false);
+        // setAllPolls((prev) => [...prev, ...response?.data?.data]);
       }
     } catch (error) {
       toast.error(error);
@@ -58,7 +63,7 @@ const AddPost = ({ setPopup }) => {
   return (
     <PopupContainer setPopup={setPopup}>
       <form
-        className="w-[40vw] h-fit main rounded-lg p-8"
+        className="w-[40vw] h-fit main rounded-lg p-8 z-50"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-3 text-white">
