@@ -1,15 +1,12 @@
-// import Polls from "@/components/poll/Polls";
-import React from "react";
-import { isLoggedIn } from "../../lib/isLoggedIn";
+import ParentContainer from '@/components/Feed-components/ParentContainer'
+import React from 'react'
 
-const Login = () => {
-  // isLoggedIn();
+const page = () => {
   return (
-    <div className="flex justify-center">
-      {/* <Polls /> */}
-      <p>Hehiukhni</p>
+    <div>
+        <ParentContainer/>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default page

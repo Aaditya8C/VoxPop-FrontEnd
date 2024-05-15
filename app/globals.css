@@ -54,8 +54,8 @@
 
 .fixed-gradient {
   /* Set the gradient colors */
-  background: linear-gradient(#6B21A8 80%, #8B5CF6);
-    /* Make the gradient fixed */
+  background: linear-gradient(#6b21a8 80%, #8b5cf6);
+  /* Make the gradient fixed */
   background-attachment: fixed;
 
   /* Specify other styles */
@@ -72,10 +72,10 @@ body {
   scrollbar-width: none;
 }
 
-.main{
+.main {
   background-color: rgb(33, 33, 33);
 }
-=======
+
 .input-group {
   position: relative;
   background-color: inherit;
@@ -126,4 +126,3 @@ body {
 .gradient-transition:hover {
   background-position: 100% 0;
 }
-
