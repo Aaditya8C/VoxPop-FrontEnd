@@ -44,7 +44,10 @@ const Landing = () => {
             >
               Sign Up
             </button>
-            <button className="btn2-grad font-bold text-2xl">
+            <button
+              className="btn2-grad font-bold text-2xl"
+              onClick={() => router.push("/feed")}
+            >
               Share Your Opinion
             </button>
           </div>
