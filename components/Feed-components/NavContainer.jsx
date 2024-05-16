@@ -13,7 +13,6 @@ const NavContainer = ({ polls }) => {
   // const setAllPolls = pollAddStore((state) => state.setAllPolls);
 
   useEffect(() => {
-    // Fetch polls data from backend when component mounts
     const fetchPolls = async () => {
       try {
         const response = await axios.get(

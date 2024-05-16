@@ -2,16 +2,13 @@
 import { pollAddStore } from "@/store/isAddPoll";
 import axios from "axios";
 import classNames from "classnames";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AvatarBg from "../../public/assets/images/profile.png";
 import Image from "next/image";
 
 const PollCard = ({ poll, showPercentage }) => {
-  // Your existing code for pollAddStore
   const isPollAdd = pollAddStore((state) => state.isPollAdd);
-  const allPolls = pollAddStore((state) => state.allPolls);
 
-  // State for poll answers
   const [pollAnswers, setPollAnswers] = useState(
     poll?.options?.map((option, index) => ({
       option,
@@ -20,7 +17,6 @@ const PollCard = ({ poll, showPercentage }) => {
     }))
   );
 
-  // Function to calculate total votes
   const getTotalVotes = () => {
     return pollAnswers.reduce((total, answer) => total + answer.votes, 0);
   };
@@ -33,13 +29,11 @@ const PollCard = ({ poll, showPercentage }) => {
     return ((votes / totalVotes) * 100).toFixed(2);
   };
 
-  // Function to handle voting
   const handleVote = async (voteAnswer, index) => {
     // if (pollAnswers[index].clicked) {
     //   return; // If already clicked, return without taking any action
     // }
     try {
-      // Make API call to vote
       const response = await axios.put(
         `http://localhost:3002/api/polls/${poll._id}/vote`,
         {
@@ -49,7 +43,6 @@ const PollCard = ({ poll, showPercentage }) => {
         }
       );
       if (response.status === 200) {
-        // If vote recorded successfully, update the votes in the frontend
         const newPollAnswers = pollAnswers.map((answer) => {
           if (answer.option === voteAnswer) {
             answer.votes++;
