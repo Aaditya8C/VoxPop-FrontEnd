@@ -23,7 +23,7 @@ const LeftBar = () => {
           {userDetails?.username}
         </p>
 
-        <button className="bg-green-300 py-3 px-14 rounded-lg text-green-500 bg-opacity-20 mt-4">
+        <button className="bg-green-300 py-3 px-14 text-lg rounded-lg text-green-500 bg-opacity-20 mt-4">
           Edit Profile
         </button>
       </div>
@@ -44,11 +44,11 @@ const LeftBar = () => {
         </span>
         <span className="flex gap-3 items-center">
           <ImageUp color="wheat" className="font-semibold" size={24} />
-          <p>Polls Uploaded</p>
+          <p>Polls Uploaded: 5</p>
         </span>
         <span className="flex gap-3 items-center">
           <Vote color="wheat" className="font-semibold" size={24} />
-          <p>Voted for Polls</p>
+          <p>Voted for Polls: 10</p>
         </span>
       </div>
     </div>

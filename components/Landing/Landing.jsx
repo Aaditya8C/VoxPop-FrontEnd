@@ -5,6 +5,7 @@ import animationData from "../../public/assets/lottie/landing2.json";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Landing = () => {
   useEffect(() => {
@@ -63,19 +64,13 @@ const Landing = () => {
             beacon, illuminating the way forward and inviting all to embrace the
             transformative power of shared experience.
           </p>
-          <div className="flex gap-5 justify-center mt-10">
-            <button
-              className="btn-grad font-bold text-2xl"
-              onClick={() => router.push("/register")}
-            >
+          <div className="flex gap-5 justify-center mt-10 items-center">
+            <Link className="btn-grad font-bold text-2xl" href="/register">
               Sign Up
-            </button>
-            <button
-              className="btn2-grad font-bold text-2xl"
-              onClick={() => router.push("/feed")}
-            >
+            </Link>
+            <Link className="btn2-grad font-bold text-2xl" href="/feed">
               Share Your Opinion
-            </button>
+            </Link>
           </div>
         </div>
         <div className="flex flex-1">
