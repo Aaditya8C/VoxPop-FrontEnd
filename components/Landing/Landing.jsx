@@ -87,11 +87,11 @@ const Landing = () => {
           <div
             data-aos="fade-up"
             duration="2000"
-            className="flex flex-1 rounded-xl p-12 flex-col shadow-xl bg-blue-400"
+            className="flex flex-1 rounded-xl p-12 flex-col shadow-xl bg-blue-500"
             // style={{ backgroundColor: "rgba(45,45,45)" }}
             key={index}
           >
-            <p className="font-semibold text-3xl mb-10 text-orange-300">
+            <p className="font-semibold text-3xl mb-10 text-yellow-400">
               {section.title}
             </p>
             <p className="text-xl">{section.description}</p>

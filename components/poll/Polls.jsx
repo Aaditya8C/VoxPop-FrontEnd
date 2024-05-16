@@ -6,7 +6,7 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 import { pollAddStore } from "@/store/isAddPoll";
 
-const Polls = () => {
+const Polls = ({ polls }) => {
   // const [polls, setPolls] = useState([
   //   {
   //     _id: "663f4d7bfd0ebc999332cb2c",
@@ -76,34 +76,16 @@ const Polls = () => {
   const setAllPolls = pollAddStore((state) => state.setAllPolls);
   const allPolls = pollAddStore((state) => state.allPolls);
 
-  const [polls, setPolls] = useState([]);
-  useEffect(() => {
-    // Fetch polls data from backend when component mounts
-    const fetchPolls = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3002/api/fetchPolls",
-          {
-            headers: {
-              Authorization: `Bearer ${getCookie("token")}`,
-            },
-          }
-        );
-        console.log(response);
-        const { data } = response.data;
-        setPolls(data);
-        setAllPolls(data);
-      } catch (error) {
-        console.error("Error fetching polls:", error);
-      }
-    };
+  // const [polls, setPolls] = useState([]);
 
-    fetchPolls();
-  }, []);
+  useEffect(() => {
+    console.log(polls);
+  }, [polls]);
+
   return (
     <div className="grid gap-4 w-full place-items-start">
-      {!isEmpty(allPolls) &&
-        allPolls?.map((poll, index) => {
+      {!isEmpty(polls) &&
+        polls?.map((poll, index) => {
           return <PollCard poll={poll} key={index} />;
         })}
     </div>

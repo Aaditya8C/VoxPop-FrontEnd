@@ -1,19 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PopupContainer from "../Popup/PopupContainer";
-import { CircleMinus, CirclePlus } from "lucide-react";
+import { CircleMinus, CirclePlus, X } from "lucide-react";
 import axios from "axios";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import toast from "react-hot-toast";
 import { getCookie } from "cookies-next";
 import { pollAddStore } from "@/store/isAddPoll";
 
-const AddPost = ({ setPopup }) => {
+const AddPost = ({ setPopup, polls }) => {
   const [options, setOptions] = useState(["", ""]);
   const [question, setQuestion] = useState("");
   const [category, setCategory] = useState("");
   const setIsPollAdd = pollAddStore((state) => state.setIsPollAdd);
-  const setAllPolls = pollAddStore((state) => state.setAllPolls);
 
   const handleAddOption = () => {
     setOptions([...options, ""]);
@@ -53,6 +52,8 @@ const AddPost = ({ setPopup }) => {
         toast.success(response.data.message);
         setPopup(false);
         setIsPollAdd(false);
+        polls.unshift(response.data.data);
+
         // setAllPolls((prev) => [...prev, ...response?.data?.data]);
       }
     } catch (error) {
@@ -68,7 +69,18 @@ const AddPost = ({ setPopup }) => {
       >
         <div className="flex flex-col gap-3 text-white">
           <>
-            <p className="text-xl font-semibold">Add Question</p>
+            <div>
+              <p className="text-xl font-semibold">Add Question</p>
+              <div
+                className="absolute right-5 top-5 text-4xl text-white cursor-pointer"
+                onClick={(e) => {
+                  setPopup(false);
+                  setIsPollAdd(false);
+                }}
+              >
+                <X />
+              </div>
+            </div>
             <input
               type="text"
               className="w-full p-4 text-xl outline-none bg-slate-600 rounded-lg text-white"

@@ -56,10 +56,6 @@ const PollCard = ({ poll }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(allPolls);
-  }, [allPolls]);
-
   return (
     <div
       className={classNames(

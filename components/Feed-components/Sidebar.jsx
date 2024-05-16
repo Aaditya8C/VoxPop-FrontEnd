@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import { isLoggedInStore } from "@/store/isLoggedInUser";
 import { pollAddStore } from "@/store/isAddPoll";
 
-const Sidebar = () => {
+const Sidebar = ({ polls }) => {
   const [popup, setPopup] = useState(false);
   const setTab = tabsStore((state) => state.setTab);
   const tab = tabsStore((state) => state.tab);
@@ -117,7 +117,7 @@ const Sidebar = () => {
           </div>
         </div>
       )}
-      {popup && <AddPost setPopup={setPopup} closeBtn />}
+      {popup && <AddPost setPopup={setPopup} closeBtn polls={polls} />}
     </div>
   );
 };
