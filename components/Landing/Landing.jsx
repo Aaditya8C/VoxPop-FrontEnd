@@ -1,9 +1,36 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Lottie from "react-lottie";
 import animationData from "../../public/assets/lottie/landing2.json";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useRouter } from "next/navigation";
 
 const Landing = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  const router = useRouter();
+  // Data for vision, mission, and goal sections
+  const sections = [
+    {
+      title: "Our Goal",
+      description:
+        "Our goal is to provide a platform where individuals can express their opinions freely and contribute to meaningful discussions that shape public opinion and foster understanding.",
+    },
+    {
+      title: "Our Mission",
+      description:
+        "Our mission is to create a digital space that empowers people to share their perspectives, engage in constructive dialogue, and gain insights into diverse viewpoints.",
+    },
+    {
+      title: "Our Vision",
+      description:
+        "Our vision is to build a vibrant community where every voice is heard, valued, and respected, and where collective wisdom leads to positive social change.",
+    },
+  ];
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -14,22 +41,14 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-black h-full w-auto p-10 overflow-y-hidden">
-      <div className="flex mb-5 mr-5">
-        <div className="font-bold text-white text-2xl flex flex-1 cursor-pointer">
-          Flowspace
-        </div>
-        <div className="text-white flex flex-4 text-2xl gap-8 cursor-pointer">
-          <p>Login</p>
-          <p>Sign Up</p>
-        </div>
-      </div>
-      <div className="w-full bg-gradient-to-b from-purple-800 via-purple-500 to-violet rounded-xl flex">
+    <div className="bg-black h-full w-auto overflow-y-hidden">
+      <div className="w-full flex ">
         <div className="flex flex-1 text-white px-10 pt-48 flex-col">
-          <p className="text-5xl font-bold text-center">
-            Know the Public Opinion or let know your opinion
+          <p className="text-5xl font-bold text-center text-clip">
+            Know the <span className="text-orange-300">Public Opinion</span> or
+            let know your opinion
           </p>
-          <p className="font-semibold text-center mt-10">
+          <p className="text-xl text-center mt-10">
             We offer a sanctuary for those seeking to navigate the currents of
             thought and emotion, providing a digital haven where minds converge,
             ideas flourish, and connections ignite. Within this dynamic
@@ -45,8 +64,16 @@ const Landing = () => {
             transformative power of shared experience.
           </p>
           <div className="flex gap-5 justify-center mt-10">
-            <button className="btn-grad font-bold text-2xl">Sign Up</button>
-            <button className="btn2-grad font-bold text-2xl">
+            <button
+              className="btn-grad font-bold text-2xl"
+              onClick={() => router.push("/register")}
+            >
+              Sign Up
+            </button>
+            <button
+              className="btn2-grad font-bold text-2xl"
+              onClick={() => router.push("/feed")}
+            >
               Share Your Opinion
             </button>
           </div>
@@ -55,34 +82,21 @@ const Landing = () => {
           <Lottie options={defaultOptions} height={700} width={700} />
         </div>
       </div>
-      <div className="w-full flex gap-24 px-36 text-white mt-56 text-center">
-        <div className="flex flex-1 fixed-gradient px-10 flex-col">
-          <p className="font-semibold text-2xl mb-10">Our Goal</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-            iusto voluptatem officiis architecto obcaecati temporibus quae nulla
-            eveniet ut laudantium vitae illo reprehenderit suscipit dolore
-            repellendus ab quaerat, enim eaque.
-          </p>
-        </div>
-        <div className="flex flex-1 fixed-gradient px-10 flex-col">
-          <p className="font-semibold text-2xl mb-10">Our Mission</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea totam
-            rerum consequatur assumenda cumque velit et in laborum animi id
-            quisquam rem nihil, quis impedit exercitationem, repellendus hic,
-            odio voluptas.
-          </p>
-        </div>
-        <div className="flex flex-1 fixed-gradient px-10 flex-col">
-          <p className="font-semibold text-2xl mb-10">Our Vision</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-            voluptate beatae magni recusandae illum aspernatur dolorum provident
-            magnam optio ex laborum, accusantium deleniti libero veritatis
-            pariatur ipsum, quam, natus dignissimos.
-          </p>
-        </div>
+      <div className="w-full grid grid-cols-3 gap-20 px-40 pb-10 text-white mt-56 text-center">
+        {sections.map((section, index) => (
+          <div
+            data-aos="fade-up"
+            duration="2000"
+            className="flex flex-1 rounded-xl p-12 flex-col shadow-xl bg-blue-500"
+            // style={{ backgroundColor: "rgba(45,45,45)" }}
+            key={index}
+          >
+            <p className="font-semibold text-3xl mb-10 text-yellow-400">
+              {section.title}
+            </p>
+            <p className="text-xl">{section.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

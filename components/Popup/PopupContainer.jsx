@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import stopOverflow from "../../components/helpers/stopOverflow"
+import stopOverflow from "../../components/helpers/stopOverflow";
 import classNames from "classnames";
 import { X } from "lucide-react";
 
@@ -37,7 +37,7 @@ function PopupContainer({
         className={classNames(
           "absolute",
           position == "center" &&
-            "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
+            "left-3/4 top-1/2 -translate-x-1/2 -translate-y-1/2",
           position == "top" && "left-1/2 top-0 -translate-x-1/2",
           position == "bottomCase" &&
             "left-1/2 md:top-1/2 -translate-x-1/2 bottom-0 md:-translate-y-[70%]"

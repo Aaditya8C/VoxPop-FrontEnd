@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { setCookie } from "cookies-next";
 import PrimaryBtn from "../Button";
 import { userDetailsStore } from "@/store/userStore";
+import { isLoggedInStore } from "@/store/isLoggedInUser";
 // import Loader from "../Loader/Loader";
 // import { useLoader } from "@/store/loaderStore";
 
@@ -17,6 +18,7 @@ const LoginComponent = () => {
   const [type, setType] = useState(false);
   //   const setLoading = useLoader((state) => state.setLoading);
   const getUserDetails = userDetailsStore((state) => state.getUserDetails);
+  const setIsLoggedIn = isLoggedInStore((state) => state.setIsLoggedIn);
 
   const {
     register,
@@ -40,6 +42,7 @@ const LoginComponent = () => {
         toast.success("Login Successful!");
         getUserDetails();
         router.push("/feed");
+        setIsLoggedIn(true);
         // setLoading(false);
       } else {
         toast.error(response?.data?.message);

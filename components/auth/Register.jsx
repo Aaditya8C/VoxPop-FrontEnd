@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import PrimaryBtn from "../Button";
 import AvatarBg from "../../public/assets/images/profile.png";
 import { userDetailsStore } from "@/store/userStore";
+import { isLoggedInStore } from "@/store/isLoggedInUser";
 
 // import { userDetailsStore } from "@/store/userStore";
 // import { useLoader } from "@/store/loaderStore";
@@ -20,6 +21,8 @@ const RegisterComponent = () => {
   const [type, setType] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
   const getUserDetails = userDetailsStore((state) => state.getUserDetails);
+  const setIsLoggedIn = isLoggedInStore((state) => state.setIsLoggedIn);
+
   //   const setLoading = useLoader((state) => state.setLoading);
 
   const {
@@ -45,6 +48,7 @@ const RegisterComponent = () => {
         toast.success("Registration Successful!");
         router.push("/feed");
         getUserDetails();
+        setIsLoggedIn(true);
         // setLoading(false);
       } else {
         toast.error(response?.data?.message);
