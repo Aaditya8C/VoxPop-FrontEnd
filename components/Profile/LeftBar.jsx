@@ -7,7 +7,6 @@ import { BriefcaseBusiness, ImageUp, Phone, Vote } from "lucide-react";
 
 const LeftBar = () => {
   const userDetails = userDetailsStore((state) => state.userDetails);
-  console.log(userDetails);
   return (
     <div
       className="flex flex-col gap-4 text-white font-semibold text-2xl items-center shadow-2xl rounded-xl mx-14 my-8"

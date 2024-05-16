@@ -1,12 +1,11 @@
 import ParentContainer from "@/components/Feed-components/ParentContainer";
-import { isLoggedIn } from "@/lib/isLoggedIn";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const page = () => {
-  // const token = cookies().get("token")?.value;
-  // if (!token) redirect("/login");
+  const token = cookies().get("token")?.value;
+  if (!token) redirect("/login");
   // isLoggedIn();
   return (
     <div>
