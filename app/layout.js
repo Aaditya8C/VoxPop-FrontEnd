@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import NextTopLoader from "nextjs-toploader";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Toaster position="top-right" reverseOrder={false} />
-        <NextTopLoader color="#4983f6" />
-        {children}
-      </body>
+      <ChakraProvider>
+        <body className={inter.className}>
+          <Toaster position="top-right" reverseOrder={false} />
+          <NextTopLoader color="#4983f6" />
+          {children}
+        </body>
+      </ChakraProvider>
     </html>
   );
 }

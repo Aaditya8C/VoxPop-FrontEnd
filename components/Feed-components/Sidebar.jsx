@@ -61,6 +61,11 @@ const Sidebar = ({ polls }) => {
     ],
     []
   );
+
+  const handleClick = (tabObj) => {
+    setTab(tabObj.name);
+    if (tabObj.name.toLowerCase() == "profile") router.push("/profile");
+  };
   return (
     <div className="h-screen sticky top-0 flex bg-black flex-col">
       <p className="text-2xl text-white my-10 ml-10 font-bold">Flowspace</p>
@@ -84,7 +89,7 @@ const Sidebar = ({ polls }) => {
                 className={`flex gap-3 p-4 items-center transition-all hover:bg-gray-800 cursor-pointer rounded-md text-white ${
                   tab === tabObj.name ? "bg-gray-800" : "bg-black"
                 }`}
-                onClick={() => setTab(tabObj.name)}
+                onClick={() => handleClick(tabObj)}
               >
                 <tabObj.icon size={25} />
                 <p className="text-lg">{tabObj.name}</p>

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef } from "react";
 import {
   Avatar,
   AvatarBadge,
@@ -16,30 +16,32 @@ import {
   Text,
   useDisclosure,
   VStack,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
+import { userDetailsStore } from "@/store/userStore";
 
 function Profile() {
-  const [userProfile, setUserProfile] = useState(null)
+  const [userProfile, setUserProfile] = useState(null);
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const profileImage = useRef(null)
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const profileImage = useRef(null);
+  const userDetails = userDetailsStore((state) => state.userDetails);
 
   const openChooseImage = () => {
-    profileImage.current.click()
-  }
+    profileImage.current.click();
+  };
 
-  const changeProfileImage = event => {
-    const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg']
-    const selected = event.target.files[0]
+  const changeProfileImage = (event) => {
+    const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/jpg"];
+    const selected = event.target.files[0];
 
     if (selected && ALLOWED_TYPES.includes(selected.type)) {
-      let reader = new FileReader()
-      reader.onloadend = () => setUserProfile(reader.result)
-      return reader.readAsDataURL(selected)
+      let reader = new FileReader();
+      reader.onloadend = () => setUserProfile(reader.result);
+      return reader.readAsDataURL(selected);
     }
 
-    onOpen()
-  }
+    onOpen();
+  };
 
   return (
     <VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
@@ -48,7 +50,7 @@ function Profile() {
         name="Mishra Ji"
         cursor="pointer"
         onClick={openChooseImage}
-        src={userProfile ? userProfile : '/img/tim-cook.jpg'}
+        src={userDetails ? userDetails?.imageUrl : "/img/tim-cook.jpg"}
       >
         <AvatarBadge bg="brand.blue" boxSize="1em">
           <svg width="0.4em" fill="currentColor" viewBox="0 0 20 20">
@@ -90,14 +92,14 @@ function Profile() {
       </Modal>
       <VStack spacing={1}>
         <Heading as="h3" fontSize="xl" color="brand.dark">
-          Mishra Ji
+          {userDetails?.username}
         </Heading>
         <Text color="brand.gray" fontSize="sm">
-          CEO of Apple
+          {userDetails?.role}
         </Text>
       </VStack>
     </VStack>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

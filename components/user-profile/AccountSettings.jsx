@@ -1,9 +1,9 @@
-import { FormControl, FormLabel, Grid, Input, Select } from '@chakra-ui/react'
+import { FormControl, FormLabel, Grid, Input, Select } from "@chakra-ui/react";
 
 function AccountSettings() {
   return (
     <Grid
-      templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
+      templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
       gap={6}
     >
       <FormControl id="firstName">
@@ -55,7 +55,7 @@ function AccountSettings() {
         </Select>
       </FormControl>
     </Grid>
-  )
+  );
 }
 
-export default AccountSettings
+export default AccountSettings;
