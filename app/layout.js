@@ -14,13 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <ChakraProvider>
-        <body className={inter.className}>
-          <Toaster position="top-right" reverseOrder={false} />
-          <NextTopLoader color="#4983f6" />
-          {children}
-        </body>
-      </ChakraProvider>
+      {/* <ChakraProvider> */}
+      <body className={inter.className}>
+        <Toaster position="top-right" reverseOrder={false} />
+        <NextTopLoader color="#4983f6" />
+        {children}
+      </body>
+      {/* </ChakraProvider> */}
     </html>
   );
 }

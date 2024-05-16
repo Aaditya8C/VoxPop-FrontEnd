@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import AvatarBg from "../../public/assets/images/profile.png";
 import Image from "next/image";
 
-const PollCard = ({ poll }) => {
+const PollCard = ({ poll, showPercentage }) => {
   // Your existing code for pollAddStore
   const isPollAdd = pollAddStore((state) => state.isPollAdd);
   const allPolls = pollAddStore((state) => state.allPolls);
@@ -23,6 +23,14 @@ const PollCard = ({ poll }) => {
   // Function to calculate total votes
   const getTotalVotes = () => {
     return pollAnswers.reduce((total, answer) => total + answer.votes, 0);
+  };
+
+  const getPercentage = (votes) => {
+    const totalVotes = getTotalVotes();
+    if (totalVotes === 0) {
+      return "0.00";
+    }
+    return ((votes / totalVotes) * 100).toFixed(2);
   };
 
   // Function to handle voting
@@ -78,9 +86,7 @@ const PollCard = ({ poll }) => {
       <p className="font-semibold text-xl">{poll?.question}</p>
       <ul>
         {pollAnswers.map((answer, index) => {
-          const percentage = ((answer.votes / getTotalVotes()) * 100).toFixed(
-            2
-          );
+          const percentage = getPercentage(answer.votes);
           return (
             <li key={index}>
               <button
@@ -89,10 +95,10 @@ const PollCard = ({ poll }) => {
                 style={{ backgroundColor: "rgb(55, 55, 55)", color: "white" }}
               >
                 <span className="z-10">{answer.option}</span>
-                {answer.clicked && (
+                {(answer.clicked || showPercentage) && (
                   <span className="z-10 ml-auto">{percentage}%</span>
                 )}
-                {answer.clicked && (
+                {(answer.clicked || showPercentage) && (
                   <span
                     className="absolute inset-0 vote-grad rounded-md"
                     style={{
@@ -106,6 +112,8 @@ const PollCard = ({ poll }) => {
             </li>
           );
         })}
+
+        <p className="text-white text-lg">{getTotalVotes()} voted</p>
       </ul>
     </div>
   );

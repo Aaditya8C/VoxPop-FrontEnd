@@ -31,10 +31,11 @@ const RightBar = () => {
   }, []);
 
   return (
-    <div className="grid gap-4 w-full place-items-start px-24">
+    <div className="grid gap-4 w-3/4 h-full place-items-start px-24 my-8 overflow-x-scroll">
       {/* Render user's polls */}
+      <p className="text-4xl text-orange-300">Your Polls</p>
       {userPolls.map((poll) => (
-        <PollCard key={poll._id} poll={poll} />
+        <PollCard key={poll._id} poll={poll} showPercentage />
       ))}
     </div>
   );
