@@ -51,6 +51,7 @@ const RegisterComponent = () => {
         setIsLoggedIn(true);
         // setLoading(false);
       } else {
+        console.log(response?.data?.message);
         toast.error(response?.data?.message);
         // setLoading(false);
       }
@@ -206,6 +207,23 @@ const RegisterComponent = () => {
           </label>
           {errors.username && errors.username.type === "required" && (
             <span className="text-red-600 text-xs">Username is required</span>
+          )}
+        </div>
+        <div className="input-group w-3/4">
+          <input
+            id="role"
+            type="text"
+            required
+            className="input"
+            {...register("role", {
+              required: true,
+            })}
+          />
+          <label htmlFor="role" className="placeholder">
+            Role
+          </label>
+          {errors.username && errors.username.type === "required" && (
+            <span className="text-red-600 text-xs">Role is required</span>
           )}
         </div>
         <div className="input-group w-3/4">

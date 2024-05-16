@@ -40,7 +40,7 @@ const LeftBar = () => {
             className="font-semibold"
             size={24}
           />
-          <p>Entrepreneur</p>
+          <p>{userDetails?.role}</p>
         </span>
         <span className="flex gap-3 items-center">
           <ImageUp color="wheat" className="font-semibold" size={24} />
