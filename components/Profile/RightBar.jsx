@@ -11,7 +11,7 @@ const RightBar = () => {
     const fetchUserPolls = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/api/user/polls",
+          "https://voxpop-backend.onrender.com/api/user/polls",
           {
             headers: {
               Authorization: `Bearer ${getCookie("token")}`,

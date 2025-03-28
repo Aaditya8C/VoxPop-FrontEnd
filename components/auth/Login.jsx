@@ -33,7 +33,7 @@ const LoginComponent = () => {
     try {
       // setLoading(true);
       const response = await axios.post(
-        "http://localhost:3002/api/login",
+        "https://voxpop-backend.onrender.com/api/login",
         data
       );
       if (response?.data?.status) {

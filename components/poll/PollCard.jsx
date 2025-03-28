@@ -35,7 +35,7 @@ const PollCard = ({ poll, showPercentage }) => {
     // }
     try {
       const response = await axios.put(
-        `http://localhost:3002/api/polls/${poll._id}/vote`,
+        `https://voxpop-backend.onrender.com/api/polls/${poll._id}/vote`,
         {
           optionIndex: pollAnswers.findIndex(
             (answer) => answer.option === voteAnswer

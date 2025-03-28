@@ -10,7 +10,7 @@ export const userDetailsStore = create(
       getUserDetails: async () => {
         try {
           const response = await axios.get(
-            "http://localhost:3002/api/get-user",
+            "https://voxpop-backend.onrender.com/api/get-user",
             {
               headers: {
                 Authorization: `Bearer ${getCookie("token")}`,

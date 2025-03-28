@@ -15,7 +15,7 @@ const ParentContainer = () => {
     const fetchPolls = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/api/fetchPolls",
+          "https://voxpop-backend.onrender.com/api/fetchPolls",
           {
             headers: {
               Authorization: `Bearer ${getCookie("token")}`,

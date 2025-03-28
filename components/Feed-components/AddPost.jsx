@@ -39,7 +39,7 @@ const AddPost = ({ setPopup, polls }) => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3002/api/polls",
+        "https://voxpop-backend.onrender.com/api/polls",
         data,
         {
           headers: {

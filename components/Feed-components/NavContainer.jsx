@@ -16,7 +16,7 @@ const NavContainer = ({ polls }) => {
     const fetchPolls = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3002/api/fetchPolls/${tab}`,
+          `https://voxpop-backend.onrender.com/api/fetchPolls/${tab}`,
           {
             headers: {
               Authorization: `Bearer ${getCookie("token")}`,
